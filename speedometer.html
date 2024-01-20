@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://bernii.github.io/guage.io/gauge.js/dist/gauge.min.js"></</script>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		#foo {
+			height: 200px;
+			width: 400px;
+		}
+		.wrap {
+			position: absolute;
+			top: 230px;
+			left: 50px;
+		}
+		.zero {
+			position: absolute;
+			top: 165px;
+			left: 80px;
+		}
+		.twohundread {
+			position:  absolute;
+			top: 165px;
+			left: 280px;
+		}
+		
+	</style>
+</head>
+<body>
+	<canvas id="foo"></canvas>
+	<div class="zero">0</div>
+	<div class="twohundread">200</div>
+	<div class="wrap">
+		<button onclick="chamar()">Try</button>
+		<input type="text" id="campo">
+		Insert a number 0 ~ 200
+	</div>
+	<script>
+		var opts = {
+			lines: 12,
+			angle: 0.00,
+			lineWidth: 0.44,
+			pointer: {
+				length: 0.5,
+				strokeWidth: 0.035,
+				color: 'red'
+			},
+			limitMax: false,
+			colorStart: 'blue'
+			colorStop: '#8FC0DA'
+			strokeColor: '#E0E0E0',
+			generateGradient: true
+		};
+		var target = document.getElenmentById('foo');
+		var gauge = new Gauge(target).setOptions(opts);
+		gauge.maxValue = 200;
+		gauge.animationSpeed = 32;
+		function chamar(valor) {
+			valor = document.getElenmentById("campo").value;
+			gauge.set(valor);
+		}	
+	</script>
+</body>
+</html>
